@@ -29,29 +29,37 @@ class App extends Component{
         })
     }
     handleMultipleThree=()=>{
+        var arr=[]
         for(var i = 0; i<= parseInt(this.state.increment); i++ ){
-            if(this.state.increment[i]%3==0)
-            {
-                this.setState({
-                    mulThree:[... this.state.mulThree]
-                })
+            if(i%3===0)
+            {  
+             arr.push(i)
+              // this.state.mulThree.push(i)
+              //   console.log(this.state.mulThree)
             }
         }
-    }
-    handleMultipleFive=()=>{
-        for(var i = 0; i<=10; i++ ){
-           
-          const result = parseInt(this.state.increment)+1 * i
-          this.setState({
-            mulFive:[... this.state.mulFive]
-        })
-
-          // display the result
-
-          console.log(`${this.state.increment} * ${i} = ${result}`);
-      }
+        console.log(arr)
+        this.setState({
+            mulThree: arr
+          })
         
     }
+    handleMultipleFive=()=>{
+        var arr=[]
+        for(var i = 0; i<= parseInt(this.state.increment); i++ ){
+            if(i%5===0)
+            {  
+             arr.push(i)
+              // this.state.mulThree.push(i)
+              //   console.log(this.state.mulThree)
+            }
+        }
+        console.log(arr)
+        this.setState({
+            mulFive: arr
+          })
+   
+      }
     render(){
         return(
             <React.Fragment>
@@ -66,7 +74,7 @@ class App extends Component{
                 {this.state.mulThree.map((item,index)=><span key={index}>Multiple 3 : {item}</span>)}
                 </div>
                 <div>
-                <button onClick={()=>this.handleMultipleFive()+1}>Multiple 5</button>
+                <button onClick={()=>this.handleMultipleFive()}>Multiple 5</button>
                 {this.state.mulFive.map((item,index)=><span key={index}>Multiple 5 : {item}</span>)}
                 </div>
                 <button onClick={()=>this.handleReset()}>Reset</button>
